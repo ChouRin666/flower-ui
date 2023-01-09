@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 走马灯 -->
-    <el-carousel height="150px">
+    <el-carousel height="150px" v-if="isShow">
       <el-carousel-item v-for="item in images" :key="item">
         <el-link :href="item.courseUrl" target="_blank">
           <el-image :src="item.imageUrl"></el-image>
@@ -12,11 +12,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { getBanners } from "../http/index";
 
+// ref() 获取响应式的值
 const images = ref();
+const isShow = ref(false);
 
-images.value = [
+// 静态数据
+/* images.value = [
   {
     imageUrl: "/images/banners/21_birthday_banner_pc.jpg",
     courseUrl: "https://www.baidu.com",
@@ -29,7 +33,15 @@ images.value = [
     imageUrl: "/images/banners/21_syz_banner_pc.jpg",
     courseUrl: "https://www.baidu.com",
   },
-];
+]; */
+
+onMounted(async () => {
+  // 动态数据
+  const res = await getBanners();
+  // console.log(res);
+  images.value = res.data;
+  isShow.value = true;
+});
 </script>
 
 <style lang="scss">
