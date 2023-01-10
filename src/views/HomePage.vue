@@ -9,6 +9,8 @@
       </el-carousel-item>
     </el-carousel>
   </div>
+  <!-- Container 布局容器  -->
+  <HomeContent></HomeContent>
 </template>
 
 <script lang="ts" setup>
@@ -16,6 +18,7 @@ import { ref, onMounted } from "vue";
 // import { getBanners } from "../http/index";
 // import { getBanners2 } from "../http/index";
 import { getBanners3 } from "../http/index";
+import HomeContent from "../components/HomeContent.vue";
 
 // ref() 获取响应式的值
 const images = ref();
@@ -29,7 +32,7 @@ onMounted(async () => {
 
   // CORS 跨域问题
   /*  
-    Access to XMLHttpRequest at 'https://localhost:7130/api/Image/GetImages' 
+    Access to XMLHttpRequest at 'https://localhost:7296/api/Image/GetImages' 
     from origin 'http://localhost:8080' has been blocked by 
     CORS policy: No 'Access-Control-Allow-Origin' header is 
     present on the requested resource. 

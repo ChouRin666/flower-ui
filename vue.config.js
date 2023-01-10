@@ -3,9 +3,9 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      // 要访问的后端地址 https://localhost:7130/api 被代理成 /api
+      // 要访问的后端地址 https://localhost:7296/api 被代理成 /api
       "/api": {
-        target: "https://localhost:7130/api",
+        target: "https://localhost:7296/api",
         changeOrigin: true, // 允许跨域
         vs: true,
         pathRewrite: {
